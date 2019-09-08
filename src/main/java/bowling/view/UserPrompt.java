@@ -17,21 +17,21 @@ public class UserPrompt {
             String input = takeInput();
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.println("숫자가 아닙니다");
+            System.out.println("Only numbers (0~10) are allowed.");
             return takeNumberOfPlayers();
         }
     }
 
     private static String validateName(String name) {
         if (name.length() != ACCEPTED_LENGTH) {
-            throw new IllegalArgumentException("입력된 이름이 3자가 아닙니다.");
+            throw new IllegalArgumentException("Requres 3 letters.");
         }
         return name;
     }
 
     private static String promptUserForName(int number) {
         try {
-            System.out.printf("플레이어 %d의 이름은?(3 english letters): ", number);
+            System.out.printf("Player %d's name (3 english letters): ", number);
             return validateName(takeInput());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
@@ -40,7 +40,7 @@ public class UserPrompt {
     }
 
     public static List<String> promptUserForNames() {
-        System.out.println("How many people? ");
+        System.out.println("Number of players? ");
         int numberOfPeople = takeNumberOfPlayers();
         List<String> playerNames = new ArrayList<>();
         for (int number = 0; number < numberOfPeople; number++) {
@@ -56,7 +56,7 @@ public class UserPrompt {
             String input = takeInput();
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            System.out.println("숫자가 아닙니다.");
+            System.out.println("Only numbers (0~10) are allowed.");
             return promptUserForBowl(name);
         }
     }
